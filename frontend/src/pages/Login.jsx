@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import api from '../pages/api/api'
 import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 import { easeInOut, motion } from 'motion/react'
 import './css/login.css'
 import netfliximg from '../assets/png/netflix.png'
@@ -18,13 +18,11 @@ const Login = () => {
     const navigate = useNavigate()
     const { register, handleSubmit } = useForm()
     const { verifyUser } = useContext(AuthContext)
-
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const submitHanddler = async (data) => {
-
 
         try {
             const response = await api.post('/auth/login', {
@@ -32,20 +30,16 @@ const Login = () => {
                 password: data.password
             }).then((res) => {
                 navigate('/dashboard')
-                console.log('user login successfully', res);
-                toast.success('user registered successfully', {
-                })
                 verifyUser()
+                toast.success("user login sucessfully")
             })
 
         } catch (error) {
-            console.log(error);
-
+            toast.error("invalid username and password")
         }
     }
     return (
         <div className='w-screen h-screen bg-gray-300 lg:p-5 flex flex-row'>
-
             <div className=' flex-row  w-1/2 items-center justify-center hidden lg:flex'>
                 <div className="quote-div  justify-center flex  items-center w-1/2 text-5xl lg:ml-5 m-5 ">
                     <h5 className='w-full'>All your <span className='lg:text-6xl text-blue-600'>Subs,</span> <br />one dashboard.</h5>

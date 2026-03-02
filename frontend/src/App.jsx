@@ -5,6 +5,8 @@ import { AuthContext } from './context/Wrapper'
 import { useContext } from 'react'
 import api from './pages/api/api'
 import AllRoutes from './pages/AllRoutes'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
     const { user, loading } = useContext(AuthContext)
@@ -12,6 +14,7 @@ const App = () => {
         <div className='flex flex-row' >
             {user ? <Nav /> : ""}
             <AllRoutes />
+            <ToastContainer position='bottom-right' autoClose={3000} style={{ zIndex: 99999 }} />
         </div>
     )
 }
