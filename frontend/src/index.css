@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: quicksand;
+  src: url('./assets//Quicksand-Medium.woff2');
+}
+
+body {
+  font-family: quicksand;
+}
