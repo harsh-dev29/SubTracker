@@ -6,6 +6,7 @@ import Register from './Register'
 import Dashboard from './Dashboard'
 import NotFound from './NotFound'
 import { AuthContext } from '../context/Wrapper'
+import NotLogin from './NotLogin'
 
 const AllRoutes = () => {
     const { user } = useContext(AuthContext)
@@ -18,7 +19,7 @@ const AllRoutes = () => {
                 {user ? <>
                     <Route path='/' element={<Home />} />
                     <Route path='/dashboard' element={<Dashboard />} />
-                </> : ""}
+                </> : <NotLogin />}
             </Routes>
         </div>
     )
