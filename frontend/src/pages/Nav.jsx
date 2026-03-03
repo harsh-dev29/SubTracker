@@ -10,32 +10,18 @@ import { easeInOut, easeOut } from 'motion/react';
 
 
 const Nav = () => {
+    const navigate = useNavigate()
     const [isActive, setisActive] = useState(false)
+    const { user } = useContext(AuthContext)
     const navref = useRef()
     const menuref1 = useRef()
     const menuref2 = useRef()
+    const menuref3 = useRef()
     const menulist = useRef()
     const menulist1 = useRef()
     const menulist2 = useRef()
     const menulist3 = useRef()
-
     gsap.registerPlugin(useGSAP)
-    const navigate = useNavigate()
-    const logouttoast = () => toast.success("user logged out successfully")
-    const { verifyUser } = useContext(AuthContext)
-    const logout = async () => {
-        await api.get('/auth/logout').then((res) => {
-            console.log(res);
-            navigate('/login')
-        })
-        verifyUser()
-    }
-    const showNavRoutes = ['/', '/dashboard',];
-
-    // If the current path isn't in our list, it's likely a 404 or a hidden page
-    if (!showNavRoutes.includes(location.pathname)) {
-        return null;
-    }
 
     useGSAP(() => {
         if (isActive == false) {
@@ -52,6 +38,10 @@ const Nav = () => {
                 opacity: 1,
                 duration: .8
             })
+            gsap.to(menuref3.current, {
+                opacity: 1,
+                duration: .8
+            })
         } else {
             gsap.to(navref.current, {
                 x: 200,
@@ -63,6 +53,10 @@ const Nav = () => {
                 duration: .8
             })
             gsap.to(menuref2.current, {
+                opacity: 0,
+                duration: .8
+            })
+            gsap.to(menuref3.current, {
                 opacity: 0,
                 duration: .8
             })
@@ -106,31 +100,44 @@ const Nav = () => {
         }
     }, [isActive])
 
+    const showNavRoutes = ['/', '/dashboard',];
 
+    // If the current path isn't in our list, it's likely a 404 or a hidden page
+    if (!showNavRoutes.includes(location.pathname)) {
+        return null;
+    }
+
+    const logout = () => {
+        api.get('/auth/logout').then((res) => {
+            navigate('/login')
+            toast.success("user logged out successfully")
+            console.log(res);
+        })
+    }
     return (
-        <div ref={navref} className='mobile-nav absolute z-10 lg:relative md:absolute md:right-0  lg:block right-0 bg-gray-700 h-screen text-white w-65 lg:w-64 p-4 '>
-            <div className='flex flex-row-reverse lg:block items-center gap-1 '>
-                <h1 ref={menuref2} className='text-4xl'>SubTracker</h1>
+        <div ref={navref} className='mobile-nav absolute z-10 lg:relative md:absolute md:right-0  lg:block right-0 bg-gray-700 h-screen text-white w-65 lg:w-64 '>
+            <div className='flex flex-row-reverse lg:block items-center gap-1 p-4'>
+                <h1 ref={menuref3} className='text-4xl'>SubTracker</h1>
                 <div className='block p-2 lg:hidden sm:block bg-gray-600 rounded-lg'>< RiMenuLine onClick={() => {
                     setisActive(!isActive)
                 }} /></div>
             </div>
-            <div className='flex flex-col gap-8 text-xl mt-12'>
+            <div className='flex flex-col gap-8 text-xl mt-12 p-4'>
                 <h1 className='flex gap-2 cursor-pointer' onClick={() => {
                     navigate("/dashboard")
-                }}><RiHome4Line /><h2 ref={menulist}>Dashboard</h2></h1>
+                }}><RiHome4Line /><span ref={menulist}>Dashboard</span></h1>
                 <h1 onClick={() => {
                     navigate("/addsubscription")
-                }} className='flex gap-2 cursor-pointer'><span className='text-2xl'>+</span><h2 ref={menulist1}> Add Subscription</h2></h1>
-                <h1 className='flex gap-2 cursor-pointer'><RiBarChartFill /><h2 ref={menulist2}>Analytics</h2></h1>
-                <h1 className='flex gap-2 cursor-pointer'><RiSettings3Line /><h2 ref={menulist3}>Settings</h2></h1>
+                }} className='flex gap-2 cursor-pointer'><span className='text-2xl p-1'>+</span><span ref={menulist1}>Add Subscription</span></h1>
+                <h1 className='flex gap-2 cursor-pointer'><RiBarChartFill /><span ref={menulist2}>Analytics</span></h1>
+                <h1 className='flex gap-2 cursor-pointer'><RiSettings3Line /><span ref={menulist3}>Settings</span></h1>
             </div>
-            <div ref={menuref1} className='flex gap-4   absolute bottom-0 p-4 border-t-2 border-gray-400 items-center'>
+            <div className='flex gap-6 absolute bottom-2 p-2  border-t-2 border-gray-400 items-center'>
+                <div className='h-10 w-13 rounded-full bg-gray-400 flex items-center justify-center'><h1>{user.fullname.firstName.charAt(0)}{user.fullname.lastName.charAt(0)}</h1></div>
                 {/* <img className='rounded-full' src="" alt="dummy" /> */}
-                <h1>John Doe</h1>
-                <button onClick={() => {
+                <h1 ref={menuref1}>{user.fullname.firstName} {user.fullname.lastName}</h1>
+                <button ref={menuref2} onClick={() => {
                     logout()
-                    logouttoast()
                 }} className='bg-gray-500 rounded-full p-2 cursor'>Logout</button>
             </div>
         </div>

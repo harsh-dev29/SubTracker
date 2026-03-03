@@ -17,10 +17,10 @@ const Login = () => {
 
     const navigate = useNavigate()
     const { register, handleSubmit } = useForm()
-    const { verifyUser } = useContext(AuthContext)
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
+    const { verifyUser } = useContext(AuthContext)
 
     const submitHanddler = async (data) => {
 
