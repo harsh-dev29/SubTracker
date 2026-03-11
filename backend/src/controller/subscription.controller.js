@@ -35,7 +35,6 @@ export async function addSubscription(req, res) {
 
 export async function getAllSub(req, res) {
     const user = req.user
-
     const allSubscriptions = await subscriptionModel.find({
         user: req.user.id
     }).populate('user')
@@ -76,7 +75,7 @@ export async function expiringSubs(req, res) {
     const today = new Date()
 
     const startOfTargetDay = new Date(today)
-    startOfTargetDay.setDate(today.getDate() + 3);
+    startOfTargetDay.setDate(today.getDate() + 30);
     startOfTargetDay.setHours(0, 0, 0, 0); // Start of the day
 
     const endOfTargetDay = new Date(today)
@@ -119,3 +118,35 @@ export async function totalSpend(req, res) {
     }
 }
 
+export async function filteredSubs(req, res) {
+    const user = req.user
+
+    const activeSubs = await subscriptionModel.find({ user: user.id, status: "Active" })
+    const cancelledSubs = await subscriptionModel.find({ user: user.id, status: "Cancelled" })
+    res.status(201).json({
+        message: "testing route",
+        activeSubs,
+        cancelledSubs
+    })
+}
+
+
+//checking and marking subs to canclled
+cron.schedule("0 0 * * *", async (req, res) => {
+    console.log("cancling cron is working");
+
+    try {
+        const today = new Date()
+        const result = await subscriptionModel.updateMany({
+            nextRenewal: { $lt: today },
+            status: 'Active'
+        },
+            {
+                $set: { status: "Cancelled" }
+            }
+        )
+    } catch (error) {
+        console.log("error in cancling subscription", error);
+
+    }
+})

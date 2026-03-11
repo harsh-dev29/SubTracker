@@ -22,4 +22,7 @@ router.get('/expiringsubs', authMiddleware, subController.expiringSubs)
 //GET /api/sub/totalspend
 router.get("/totalspend", authMiddleware, subController.totalSpend)
 
+//GET /api/sub/filteredsubs
+router.get("/filteredsubs", authMiddleware, subController.filteredSubs)
+
 export default router
