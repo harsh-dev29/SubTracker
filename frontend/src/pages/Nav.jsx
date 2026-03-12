@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import { RiBarChartFill, RiHome4Line, RiMenu4Line, RiMenuLine, RiSettings3Line } from '@remixicon/react';
+import { RiBarChartFill, RiHome4Line, RiMenuLine, RiSettings3Line } from '@remixicon/react';
 import { useNavigate } from 'react-router-dom';
 import api from './api/api';
 import { AuthContext } from '../context/Wrapper';

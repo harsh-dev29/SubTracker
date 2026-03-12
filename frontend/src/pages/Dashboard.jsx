@@ -2,35 +2,39 @@ import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from './../context/Wrapper';
 import api from './api/api';
 import Register from './Register';
+import SubCard from './SubCard';
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext)
     const [monthlySpend, setmonthlySpend] = useState('')
-    const [TotalSubs, setTotalSubs] = useState('')
+    const [TotalSubs, setTotalSubs] = useState([])
     const [ActiveSubs, setActiveSubs] = useState('')
     const [CancelledSubs, setCancelledSubs] = useState('')
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                await api.get('/sub/getsub').then((res) => {
-                    setTotalSubs(res.data.allSubscriptions.length)
+    async function fetchData() {
+        try {
+            await api.get('/sub/getsub').then((res) => {
+                setTotalSubs(res.data.allSubscriptions)
+            })
+            await api.get('/sub/totalspend').then((res) => {
+                setmonthlySpend(res.data.monthlyPrice)
 
-                })
-                await api.get('/sub/totalspend').then((res) => {
-                    setmonthlySpend(res.data.monthlyPrice)
+            })
+            await api.get("/sub/filteredsubs").then((res) => {
+                setActiveSubs(res.data.activeSubs);
+                setCancelledSubs(res.data.cancelledSubs)
+            })
+        } catch (error) {
+            console.log("error in getting subscriptoins", error);
 
-                })
-                await api.get("/sub/filteredsubs").then((res) => {
-                    setActiveSubs(res.data.activeSubs);
-                    setCancelledSubs(res.data.cancelledSubs)
-                })
-            } catch (error) {
-                console.log("error in getting subscriptoins", error);
-
-            }
         }
+    }
+    useEffect(() => {
         fetchData()
     }, [])
+
+    console.log("totalsubs", TotalSubs);
+
+
 
     return (
         <div className=' bg-gray-200 h-screen overflow-y-auto lg:h-full absolute w-full lg:w-[calc(100%-256px)]'>
@@ -49,8 +53,13 @@ const Dashboard = () => {
                 </div>
             </div>
             <div className='p-10 relative h-90 w-full'>
-                <div className='bg-white h-110 w-full rounded-2xl shadow-2xl'>
 
+                <div className='bg-white h-110 w-full rounded-2xl shadow-2xl flex flex-col p-3 gap-2'>
+                    <div className='flex justify-between p-2'><h1>No</h1>
+                        <h1>Name</h1>
+                        <h1>Next renewal</h1>
+                        <h1>delete</h1></div>
+                    {TotalSubs.map((sub, index) => <SubCard fetchData={fetchData} index={index + 1} sub={sub} />)}
                 </div>
 
             </div>
