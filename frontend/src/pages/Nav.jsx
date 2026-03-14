@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import { RiBarChartFill, RiHome4Line, RiMenuLine, RiSettings3Line } from '@remixicon/react';
+import { RiBarChartFill, RiHome4Line, RiMenuFoldLine, RiMenuLine, RiSettings3Line } from '@remixicon/react';
 import { useNavigate } from 'react-router-dom';
 import api from './api/api';
 import { AuthContext } from '../context/Wrapper';
@@ -9,10 +9,8 @@ import { useGSAP } from '@gsap/react';
 import { easeInOut, easeOut } from 'motion/react';
 
 
-const Nav = () => {
+const Nav = ({ user, isActive, setisActive }) => {
     const navigate = useNavigate()
-    const [isActive, setisActive] = useState(false)
-    const { user } = useContext(AuthContext)
     const navref = useRef()
     const menuref1 = useRef()
     const menuref2 = useRef()
@@ -44,7 +42,7 @@ const Nav = () => {
             })
         } else {
             gsap.to(navref.current, {
-                x: 200,
+                x: "-100%",
                 duration: 1,
                 transition: easeOut
             })
@@ -100,7 +98,7 @@ const Nav = () => {
         }
     }, [isActive])
 
-    const showNavRoutes = ['/', '/dashboard',];
+    const showNavRoutes = ['/', '/dashboard', '/addsubscription'];
 
     // If the current path isn't in our list, it's likely a 404 or a hidden page
     if (!showNavRoutes.includes(location.pathname)) {
@@ -115,10 +113,11 @@ const Nav = () => {
         })
     }
     return (
-        <div ref={navref} className='mobile-nav absolute z-10 lg:relative md:absolute md:right-0  lg:block right-0 bg-gray-700 h-screen text-white w-65 lg:w-64 '>
-            <div className='flex flex-row-reverse lg:block items-center gap-1 p-4'>
+        <div ref={navref} className='mobile-nav absolute z-10 lg:relative md:absolute lg:block  bg-gray-700 h-screen text-white w-65 lg:w-64 '>
+
+            <div className='flex flex-row- lg:block items-center gap-1 p-4'>
                 <h1 ref={menuref3} className='text-4xl'>SubTracker</h1>
-                <div className='block p-2 lg:hidden sm:block bg-gray-600 rounded-lg'>< RiMenuLine onClick={() => {
+                <div className='block p-2 lg:hidden sm:block bg-gray-600 rounded-lg'>< RiMenuFoldLine onClick={() => {
                     setisActive(!isActive)
                 }} /></div>
             </div>
