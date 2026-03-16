@@ -8,18 +8,22 @@ import NotFound from './NotFound'
 import { AuthContext } from '../context/Wrapper'
 import NotLogin from './NotLogin'
 import AddSubscription from './AddSubscription'
+import Analytics from './Analytics'
 
 const AllRoutes = ({ isActive, setisActive }) => {
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
+    if (!user) {
+        navigate('/login')
+    }
     return (
         <div>
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
-                <Route path='/addSubscription' element={<AddSubscription />} />
-
+                <Route path='/addSubscription' element={<AddSubscription isActive={isActive} setisActive={setisActive} />} />
+                <Route path='/analytics' element={<Analytics isActive={isActive} setisActive={setisActive} />} />
                 <Route path="*" element={<NotFound />} />
                 {user ? <><Route path='/dashboard' element={<Dashboard isActive={isActive} setisActive={setisActive} />} /></> : ""}
             </Routes>

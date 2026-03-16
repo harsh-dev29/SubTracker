@@ -4,8 +4,9 @@ import { toast } from "react-toastify";
 import api from "./api/api";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
+import { RiMenuUnfoldLine } from "@remixicon/react";
 
-const AddSubscription = () => {
+const AddSubscription = ({ isActive, setisActive }) => {
     const navigate = useNavigate()
     const { register, handleSubmit } = useForm()
     const [formData, setFormData] = useState({
@@ -30,7 +31,6 @@ const AddSubscription = () => {
                 setFormData({ name: "", price: "", planType: "monthly", startDate: new Date().toISOString().split("T")[0] });
             });
 
-
         } catch (err) {
             toast.error(err.response?.data?.message || "Failed to add subscription");
         }
@@ -38,7 +38,14 @@ const AddSubscription = () => {
     };
 
     return (
-        <div className="relative p-6 w-[calc(100vw-256px)] h-full bg-gray-300  border flex items-center justify-center">
+        <div className="relative p-2 gap-4 lg:gap-1 lg:p-6 flex-col lg:w-[calc(100vw-256px)] lg:h-full w-screen h-screen bg-gray-300  border flex lg:items-center lg:justify-center">
+            <div className='flex items-center lg:hidden gap-1 p-5'>
+                <div className='block p-2 lg:hidden sm:block bg-gray-400 shadow-white shadow-2xl rounded-lg'>< RiMenuUnfoldLine onClick={() => {
+                    setisActive(!isActive)
+                }} />
+                </div>
+                <h1 className='text-4xl'>SubTracker</h1>
+            </div>
             <form onSubmit={handleSubmit(submitHanddler)} className="space-y-4  bg-white  p-4 rounded-2xl shadow-white shadow-2xl  ">
                 <h2 className="text-3xl font-bold mb-4 text-gray-800">Add New Subscription</h2>
 

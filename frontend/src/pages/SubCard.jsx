@@ -12,7 +12,7 @@ const formatDate = (dateString) => {
     return `${day}/${month}/${year}`;
 };
 
-const SubCard = ({ index, sub, fetchData }) => {
+const SubCard = ({ index, sub }) => {
     const deleteSub = async (id) => {
         try {
             await api.delete(`/sub/deletesub/${id}`).then((res) => {
@@ -23,9 +23,8 @@ const SubCard = ({ index, sub, fetchData }) => {
             console.log("error in deleting sub", error);
         }
     }
-    useEffect(() => {
-        fetchData()
-    }, [deleteSub])
+
+
     const color = sub.status === "Active" ? "bg-green-200" : "bg-red-100"
 
     return (

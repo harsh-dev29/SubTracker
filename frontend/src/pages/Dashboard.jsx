@@ -4,6 +4,7 @@ import api from './api/api';
 import Register from './Register';
 import SubCard from './SubCard';
 import { RiMenuLine, RiMenuUnfoldLine } from '@remixicon/react';
+import SubComponent from './SubComponent';
 
 const Dashboard = ({ isActive, setisActive }) => {
     const { verifyUser } = useContext(AuthContext)
@@ -11,6 +12,7 @@ const Dashboard = ({ isActive, setisActive }) => {
     const [TotalSubs, setTotalSubs] = useState([])
     const [ActiveSubs, setActiveSubs] = useState('')
     const [CancelledSubs, setCancelledSubs] = useState('')
+
     async function fetchData() {
         try {
             const [subRes, totalRes, filterRes] = await Promise.all([
@@ -26,6 +28,11 @@ const Dashboard = ({ isActive, setisActive }) => {
             console.log("error in getting subscriptoins", error);
         }
     }
+    // Transform raw subs into category totals for a Pie Chart
+
+
+
+
     useEffect(() => {
         fetchData()
     }, [])
@@ -58,11 +65,7 @@ const Dashboard = ({ isActive, setisActive }) => {
             <div className='p-10 relative h-90 w-full'>
 
                 <div className='bg-white h-110 w-full rounded-2xl shadow-2xl flex flex-col p-3 gap-2'>
-                    <div className='flex justify-between p-2'><h1>No</h1>
-                        <h1>Name</h1>
-                        <h1>Next renewal</h1>
-                        <h1>delete</h1></div>
-                    {TotalSubs.map((sub, index) => <SubCard fetchData={fetchData} index={index + 1} sub={sub} />)}
+                    <SubComponent TotalSubs={TotalSubs} fetchData={fetchData} />
                 </div>
 
             </div>
