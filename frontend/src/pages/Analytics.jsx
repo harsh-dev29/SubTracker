@@ -54,7 +54,7 @@ const Analytics = ({ isActive, setisActive }) => {
     }, [])
 
     return (
-        <div className='bg-gray-200 h-full lg:h-screen w-screen lg:w-[calc(100vw-256px)] flex flex-col items-center justify-center'>
+        <div className='bg-gray-200 h-screen lg:h-screen w-screen overflow-auto lg:w-[calc(100vw-256px)] '>
             <div className='flex items-center lg:hidden gap-1 p-5'>
                 <div className='block p-2 lg:hidden sm:block bg-gray-400 shadow-white shadow-2xl rounded-lg'>< RiMenuUnfoldLine onClick={() => {
                     setisActive(!isActive)
@@ -62,7 +62,8 @@ const Analytics = ({ isActive, setisActive }) => {
                 </div>
                 <h1 className='text-4xl'>SubTracker</h1>
             </div>
-            <div className='h-full w-full overflow-auto flex flex-col items-center justify-center'>
+            <div className='w-full overflow-auto flex flex-col items-center justify-center'>
+
                 <div className="p-8 space-y-8 ">
                     {/* Charts Section */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 ">

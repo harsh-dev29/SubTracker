@@ -9,6 +9,7 @@ import { AuthContext } from '../context/Wrapper'
 import NotLogin from './NotLogin'
 import AddSubscription from './AddSubscription'
 import Analytics from './Analytics'
+import Setting from './Setting'
 
 const AllRoutes = ({ isActive, setisActive }) => {
     const { user } = useContext(AuthContext)
@@ -24,6 +25,7 @@ const AllRoutes = ({ isActive, setisActive }) => {
                 <Route path='/register' element={<Register />} />
                 <Route path='/addSubscription' element={<AddSubscription isActive={isActive} setisActive={setisActive} />} />
                 <Route path='/analytics' element={<Analytics isActive={isActive} setisActive={setisActive} />} />
+                <Route path='/setting' element={<Setting user={user} />} />
                 <Route path="*" element={<NotFound />} />
                 {user ? <><Route path='/dashboard' element={<Dashboard isActive={isActive} setisActive={setisActive} />} /></> : ""}
             </Routes>

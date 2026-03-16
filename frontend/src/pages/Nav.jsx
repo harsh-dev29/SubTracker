@@ -98,7 +98,7 @@ const Nav = ({ user, isActive, setisActive }) => {
         }
     }, [isActive])
 
-    const showNavRoutes = ['/', '/dashboard', '/addsubscription', '/analytics'];
+    const showNavRoutes = ['/', '/dashboard', '/addsubscription', '/analytics', '/setting'];
 
     // If the current path isn't in our list, it's likely a 404 or a hidden page
     if (!showNavRoutes.includes(location.pathname)) {
@@ -131,7 +131,10 @@ const Nav = ({ user, isActive, setisActive }) => {
                 <h1 onClick={() => {
                     navigate('/analytics')
                 }} className='flex gap-2 cursor-pointer'><RiBarChartFill /><span ref={menulist2}>Analytics</span></h1>
-                <h1 className='flex gap-2 cursor-pointer'><RiSettings3Line /><span ref={menulist3}>Settings</span></h1>
+                <h1
+                    onClick={() => {
+                        navigate('/setting')
+                    }} className='flex gap-2 cursor-pointer'><RiSettings3Line /><span ref={menulist3}>Settings</span></h1>
             </div>
             <div className='flex gap-6 absolute bottom-2 p-2  border-t-2 border-gray-400 items-center'>
                 <div className='h-10 w-13 rounded-full bg-gray-400 flex items-center justify-center'><h1>{user.fullname.firstName.charAt(0)}{user.fullname.lastName.charAt(0)}</h1></div>
