@@ -21,7 +21,7 @@ const SubComponent = () => {
     })
 
     return (
-        <div className='bg-white h-110 w-full rounded-2xl flex flex-col p-3 gap-2 shadow-2xl shadow-gray-300'>
+        <div className='bg-white h-110 w-full rounded-2xl flex flex-col p-3 gap-2 shadow-2xl shadow-gray-300 overflow-auto'>
             <div className='flex justify-between p-2'><h1>No</h1>
                 <h1>Name</h1>
                 <h1>Next renewal</h1>
