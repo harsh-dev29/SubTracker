@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { RiBarChartFill, RiHome4Line, RiMenuFoldLine, RiMenuLine, RiSettings3Line } from '@remixicon/react';
 import { useNavigate } from 'react-router-dom';
-import api from './api/Api';
 import { AuthContext } from '../context/Wrapper';
 import { toast } from 'react-toastify';
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react';
 import { easeInOut, easeOut } from 'motion/react';
+import Api from '../api/Api';
 
 
 const Nav = ({ user, isActive, setisActive }) => {
@@ -106,7 +106,7 @@ const Nav = ({ user, isActive, setisActive }) => {
     }
 
     const logout = () => {
-        api.get('/auth/logout').then((res) => {
+        Api.get('/auth/logout').then((res) => {
             navigate('/login')
             toast.success("user logged out successfully")
         })

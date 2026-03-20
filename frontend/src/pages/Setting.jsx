@@ -1,23 +1,23 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../context/Wrapper'
-import api from './api/Api';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import { RiMenuUnfoldLine } from '@remixicon/react';
+import Api from '../api/Api';
 
 const Setting = ({ isActive, setisActive }) => {
     const { user } = useContext(AuthContext)
     const [TotalSubs, setTotalSubs] = useState([])
     const navigate = useNavigate()
     const logout = () => {
-        api.get('/auth/logout').then((res) => {
+        Api.get('/auth/logout').then((res) => {
             toast.success("user Logged Out Successfylly")
             navigate('/login')
         })
     }
 
     const allSubs = () => {
-        api.get('/sub/getsub').then((res) => {
+        Api.get('/sub/getsub').then((res) => {
             setTotalSubs(res.data?.allSubscriptions.length)
         })
     }

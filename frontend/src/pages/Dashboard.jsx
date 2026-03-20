@@ -3,7 +3,7 @@ import { AuthContext } from './../context/Wrapper';
 import SubCard from './SubCard';
 import { RiMenuLine, RiMenuUnfoldLine } from '@remixicon/react';
 import SubComponent from './SubComponent';
-import Api from './api/Api';
+import Api from '../api/Api';
 
 const Dashboard = ({ isActive, setisActive }) => {
     const { user, verifyUser } = useContext(AuthContext)

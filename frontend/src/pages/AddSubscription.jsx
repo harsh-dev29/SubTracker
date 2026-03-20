@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import api from "./api/Api";
+import api from "../api/Api";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { RiMenuUnfoldLine } from "@remixicon/react";

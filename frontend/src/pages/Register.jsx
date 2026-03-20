@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import api from './api/Api'
 import { easeInOut, motion } from 'motion/react'
 import { useNavigate } from 'react-router-dom'
 import netfliximg from '../assets/png/netflix.png'
@@ -9,8 +8,8 @@ import primevideoimg from '../assets/png/primevideo.png'
 import chatgptimg from '../assets/png/chatgpt.png'
 import youtubeimg from '../assets/png/youtube.png'
 import applemusicpng from '../assets/png/applemusic.png'
-import Api from './api/Api'
 import { toast } from 'react-toastify'
+import Api from '../api/Api'
 
 
 const Register = () => {

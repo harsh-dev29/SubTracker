@@ -11,7 +11,7 @@ import chatgptimg from '../assets/png/chatgpt.png'
 import youtubeimg from '../assets/png/youtube.png'
 import applemusicpng from '../assets/png/applemusic.png'
 import { AuthContext } from '../context/Wrapper'
-import Api from './api/Api'
+import Api from '../api/Api'
 
 const Login = () => {
 
