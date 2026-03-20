@@ -25,38 +25,38 @@ const Nav = ({ user, isActive, setisActive }) => {
         if (isActive == false) {
             gsap.to(navref.current, {
                 x: 0,
-                duration: 1,
+                duration: .5,
                 transition: easeOut
             })
             gsap.to(menuref1.current, {
                 opacity: 1,
-                duration: .8
+                duration: .3
             })
             gsap.to(menuref2.current, {
                 opacity: 1,
-                duration: .8
+                duration: .3
             })
             gsap.to(menuref3.current, {
                 opacity: 1,
-                duration: .8
+                duration: .3
             })
         } else {
             gsap.to(navref.current, {
                 x: "-100%",
-                duration: 1,
+                duration: .5,
                 transition: easeOut
             })
             gsap.to(menuref1.current, {
                 opacity: 0,
-                duration: .8
+                duration: .3
             })
             gsap.to(menuref2.current, {
                 opacity: 0,
-                duration: .8
+                duration: .3
             })
             gsap.to(menuref3.current, {
                 opacity: 0,
-                duration: .8
+                duration: .3
             })
         }
     }, [isActive])
