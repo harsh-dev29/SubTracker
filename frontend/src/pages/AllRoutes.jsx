@@ -17,7 +17,7 @@ const AllRoutes = ({ isActive, setisActive }) => {
     const allowedRoutes = ['/login', '/register']
     if (!user) {
         if (!allowedRoutes.includes(location.pathname)) {
-            return null
+            return navigate('/login')
         }
     }
     return (
