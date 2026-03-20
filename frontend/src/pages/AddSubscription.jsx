@@ -27,7 +27,7 @@ const AddSubscription = ({ isActive, setisActive }) => {
                 withCredentials: true,
             }).then((res) => {
                 toast.success("Subscription Added!");
-                navigate('/dashboard')
+                navigate('/')
                 setFormData({ name: "", price: "", planType: "monthly", startDate: new Date().toISOString().split("T")[0] });
             });
 

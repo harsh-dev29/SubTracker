@@ -54,7 +54,7 @@ const Analytics = ({ isActive, setisActive }) => {
     }, [])
 
     return (
-        <div className='bg-gray-200 h-screen lg:h-screen w-screen overflow-auto lg:w-[calc(100vw-256px)] '>
+        <div className='bg-gray-200 h-screen lg:h-screen w-screen overflow-auto lg:w-[calc(100vw-256px)] pb-4'>
             <div className='flex items-center lg:hidden gap-1 p-5'>
                 <div className='block p-2 lg:hidden sm:block bg-gray-400 shadow-white shadow-2xl rounded-lg'>< RiMenuUnfoldLine onClick={() => {
                     setisActive(!isActive)

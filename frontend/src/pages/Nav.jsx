@@ -123,7 +123,7 @@ const Nav = ({ user, isActive, setisActive }) => {
             </div>
             <div className='flex flex-col gap-8 text-xl mt-12 p-4'>
                 <h1 className='flex gap-2 cursor-pointer' onClick={() => {
-                    navigate("/dashboard")
+                    navigate("/")
                 }}><RiHome4Line /><span ref={menulist}>Dashboard</span></h1>
                 <h1 onClick={() => {
                     navigate("/addsubscription")

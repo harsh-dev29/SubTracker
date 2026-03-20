@@ -128,3 +128,26 @@ export async function getUser(req, res) {
     }
 }
 
+export async function logoutUser(req, res) {
+
+    try {
+        res.cookie("token", '', {
+            httpOnly: true,
+        })
+        res.status(200).json({
+            message: "user logout successfully",
+        })
+    } catch (error) {
+
+    }
+
+
+}
+
+export async function User(req, res) {
+    res.status(200).json({
+        success: true,
+        user: req.user
+    });
+
+}

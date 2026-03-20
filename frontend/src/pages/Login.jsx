@@ -29,7 +29,7 @@ const Login = () => {
                 email: data.email,
                 password: data.password
             }).then((res) => {
-                navigate('/dashboard')
+                navigate('/')
                 verifyUser()
                 toast.success("user login sucessfully")
             })
@@ -102,7 +102,7 @@ const Login = () => {
            focus:border-indigo-500 transition  ' placeholder='********' />
                         <p className='text-sm font-black mt-2'>Don't have an account?<a className='text-blue-700' href="/register"> Register</a></p>
                     </div>
-                    <button className='rounded-lg hover:scale-110 p-3 hover:bg-blue-700 transition duration-500 border-b-black bg-blue-500 w-full lg:w-fit text-lg'>sign-in</button>
+                    <button className='rounded-lg hover:scale-110 p-3 hover:bg-blue-700 transition duration-500 border-b-black bg-blue-500 w-full  text-lg'>sign-in</button>
                 </form>
             </div>
         </div>

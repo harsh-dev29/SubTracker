@@ -17,27 +17,9 @@ router.post('/register', upload.single('profile'), authController.registerUser)
 router.post('/login', authController.loginUser)
 
 //GET /api/auth/user
-router.get('/user', authMiddleware, (req, res) => {
-    // If it gets here, the middleware passed!
-    res.status(200).json({
-        success: true,
-        user: req.user
-    });
-})
+router.get('/user', authMiddleware, authController.getUser)
 
-router.get('/logout', (req, res) => {
-    try {
-        res.cookie("token", '', {
-            httpOnly: true,
-        })
-        res.status(200).json({
-            message: "user logout successfully",
-
-        })
-    } catch (error) {
-
-    }
-})
+router.get('/logout', authController.logoutUser)
 
 
 export default router

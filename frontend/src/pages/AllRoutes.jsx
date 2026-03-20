@@ -14,20 +14,22 @@ import Setting from './Setting'
 const AllRoutes = ({ isActive, setisActive }) => {
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
+    const allowedRoutes = ['/login', '/register']
     if (!user) {
-        navigate('/login')
+        if (!allowedRoutes.includes(location.pathname)) {
+            return null
+        }
     }
     return (
         <div>
             <Routes>
-                <Route path='/' element={<Home />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/addSubscription' element={<AddSubscription isActive={isActive} setisActive={setisActive} />} />
                 <Route path='/analytics' element={<Analytics isActive={isActive} setisActive={setisActive} />} />
-                <Route path='/setting' element={<Setting user={user} />} />
+                <Route path='/setting' element={<Setting user={user} isActive={isActive} setisActive={setisActive} />} />
                 <Route path="*" element={<NotFound />} />
-                {user ? <><Route path='/dashboard' element={<Dashboard isActive={isActive} setisActive={setisActive} />} /></> : ""}
+                {user ? <><Route path='/' element={<Dashboard isActive={isActive} setisActive={setisActive} />} /></> : ""}
             </Routes>
         </div>
     )

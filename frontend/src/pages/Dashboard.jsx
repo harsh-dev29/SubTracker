@@ -64,7 +64,7 @@ const Dashboard = ({ isActive, setisActive }) => {
             </div>
             <div className='p-10 relative h-90 w-full'>
 
-                <div className='bg-white h-110 w-full rounded-2xl shadow-2xl flex flex-col p-3 gap-2'>
+                <div className='bg-white h-110 w-full rounded-2xl shadow-2xl flex flex-col gap-2'>
                     <SubComponent TotalSubs={TotalSubs} fetchData={fetchData} />
                 </div>
 

@@ -190,7 +190,7 @@ const Register = () => {
            focus:border-indigo-500 transition  ' placeholder='********' />
                         <p className='text-sm font-black mt-3'>Already have an account?<a className='text-blue-700' href="/login"> Login</a></p>
                     </div>
-                    <button className=' w-full rounded-2xl hover:scale-110 p-3 hover:bg-blue-700 transition duration-500 border-b-black bg-blue-500 lg:w-fit text-lg'>sign-up</button>
+                    <button className=' w-full rounded-2xl hover:scale-110 p-3 hover:bg-blue-700 transition duration-500 border-b-black bg-blue-500  text-lg'>sign-up</button>
                 </form>
             </div>
         </div>
