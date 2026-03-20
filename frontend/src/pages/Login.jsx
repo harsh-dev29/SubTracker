@@ -32,6 +32,8 @@ const Login = () => {
                 navigate('/')
                 verifyUser()
                 toast.success("user login sucessfully")
+                console.log(res.data.user);
+
             })
 
         } catch (error) {

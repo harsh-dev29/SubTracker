@@ -15,11 +15,7 @@ const AllRoutes = ({ isActive, setisActive }) => {
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
     const allowedRoutes = ['/login', '/register']
-    if (!user) {
-        if (!allowedRoutes.includes(location.pathname)) {
-            return navigate('/login')
-        }
-    }
+
     return (
         <div>
             <Routes>

@@ -7,7 +7,7 @@ import { RiMenuLine, RiMenuUnfoldLine } from '@remixicon/react';
 import SubComponent from './SubComponent';
 
 const Dashboard = ({ isActive, setisActive }) => {
-    const { verifyUser } = useContext(AuthContext)
+    const { user, verifyUser } = useContext(AuthContext)
     const [monthlySpend, setmonthlySpend] = useState('')
     const [TotalSubs, setTotalSubs] = useState([])
     const [ActiveSubs, setActiveSubs] = useState('')
@@ -29,8 +29,6 @@ const Dashboard = ({ isActive, setisActive }) => {
         }
     }
     // Transform raw subs into category totals for a Pie Chart
-
-
 
 
     useEffect(() => {
