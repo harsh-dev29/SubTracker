@@ -4,7 +4,7 @@ import ChartBar from './ChartBar';
 import SubCard from './SubCard';
 import SubComponent from './SubComponent';
 import { RiMenuUnfoldLine } from '@remixicon/react';
-import api from '../api/api';
+import api from '../api/AxiosApi';
 
 const Analytics = ({ isActive, setisActive }) => {
     const [subs, setSubs] = useState([])

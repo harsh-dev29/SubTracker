@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SubCard from './SubCard'
-import api from '../api/api'
+import api from '../api/AxiosApi'
 
 const SubComponent = () => {
     const [subs, setsubs] = useState([])

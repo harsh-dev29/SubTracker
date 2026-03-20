@@ -3,7 +3,7 @@ import { AuthContext } from '../context/Wrapper'
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import { RiMenuUnfoldLine } from '@remixicon/react';
-import api from '../api/api';
+import api from '../api/AxiosApi';
 
 const Setting = ({ isActive, setisActive }) => {
     const { user } = useContext(AuthContext)

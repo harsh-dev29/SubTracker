@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react';
 import { easeInOut, easeOut } from 'motion/react';
-import api from '../api/api';
+import api from '../api/AxiosApi';
 
 
 const Nav = ({ user, isActive, setisActive }) => {
@@ -105,8 +105,8 @@ const Nav = ({ user, isActive, setisActive }) => {
         return null;
     }
 
-    const logout = () => {
-        api.get('/auth/logout').then((res) => {
+    const logout = async () => {
+        await api.post('/auth/logout').then((res) => {
             navigate('/login')
             toast.success("user logged out successfully")
         })

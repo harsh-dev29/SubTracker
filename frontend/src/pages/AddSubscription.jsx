@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { RiMenuUnfoldLine } from "@remixicon/react";
-import api from "../api/api";
+import api from "../api/AxiosApi";
 
 const AddSubscription = ({ isActive, setisActive }) => {
     const navigate = useNavigate()

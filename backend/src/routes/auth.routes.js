@@ -19,7 +19,7 @@ router.post('/login', authController.loginUser)
 //GET /api/auth/user
 router.get('/user', authMiddleware, authController.getUser)
 
-router.get('/logout', authController.logoutUser)
+router.post('/logout', authController.logoutUser)
 
 
 export default router
