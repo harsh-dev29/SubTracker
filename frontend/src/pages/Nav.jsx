@@ -109,7 +109,6 @@ const Nav = ({ user, isActive, setisActive }) => {
         api.get('/auth/logout').then((res) => {
             navigate('/login')
             toast.success("user logged out successfully")
-            console.log(res);
         })
     }
     return (

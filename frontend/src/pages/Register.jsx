@@ -10,6 +10,7 @@ import chatgptimg from '../assets/png/chatgpt.png'
 import youtubeimg from '../assets/png/youtube.png'
 import applemusicpng from '../assets/png/applemusic.png'
 import Api from './api/Api'
+import { toast } from 'react-toastify'
 
 
 const Register = () => {
@@ -24,7 +25,6 @@ const Register = () => {
     };
 
     const submitHanddler = async (data) => {
-        console.log(data.firstName);
 
 
         try {
@@ -35,8 +35,10 @@ const Register = () => {
                 },
                 email: data.email,
                 password: data.password
-            }).then(() => { navigate('/') })
-            console.log(response);
+            }).then(() => {
+                navigate('/')
+                toast.success("user registered successfully")
+            })
         } catch (error) {
             console.log(error);
 
