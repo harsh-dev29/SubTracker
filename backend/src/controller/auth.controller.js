@@ -34,8 +34,10 @@ export async function registerUser(req, res) {
     }, process.env.JWT_SECRET,)
 
     res.cookie("token", token, {
-        maxAge: 2 * 24 * 60 * 60 * 1000,
         httpOnly: true,
+        secure: true, // Always true for Render/Production
+        sameSite: 'none', // Required for cross-site cookies
+        maxAge: 24 * 60 * 60 * 1000
     })
     // const newUser = user;
     // const savedUser = await newUser.save();
@@ -81,8 +83,10 @@ export async function loginUser(req, res) {
 
 
     res.cookie('token', token, {
-        maxAge: 2 * 24 * 60 * 60 * 1000,
         httpOnly: true,
+        secure: true, // Always true for Render/Production
+        sameSite: 'none', // Required for cross-site cookies
+        maxAge: 24 * 60 * 60 * 1000
     })
 
 

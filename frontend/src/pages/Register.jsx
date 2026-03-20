@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import api from '../pages/api/api'
+import api from './api/Api'
 import { easeInOut, motion } from 'motion/react'
 import { useNavigate } from 'react-router-dom'
 import netfliximg from '../assets/png/netflix.png'
@@ -9,14 +9,18 @@ import primevideoimg from '../assets/png/primevideo.png'
 import chatgptimg from '../assets/png/chatgpt.png'
 import youtubeimg from '../assets/png/youtube.png'
 import applemusicpng from '../assets/png/applemusic.png'
+import Api from './api/Api'
 
 
 const Register = () => {
     const navigate = useNavigate()
     const { register, handleSubmit } = useForm()
+    const [FormData, setFormData] = useState({
+
+    })
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        setFormData({ ...FormData, [e.target.name]: e.target.value });
     };
 
     const submitHanddler = async (data) => {
@@ -24,7 +28,7 @@ const Register = () => {
 
 
         try {
-            const response = await api.post('/auth/register', {
+            const response = await Api.post('/auth/register', {
                 fullName: {
                     firstName: data.firstName,
                     lastName: data.lastName

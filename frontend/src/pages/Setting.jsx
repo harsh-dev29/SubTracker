@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../context/Wrapper'
-import api from './api/api';
+import api from './api/Api';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import { RiMenuUnfoldLine } from '@remixicon/react';

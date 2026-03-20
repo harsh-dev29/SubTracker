@@ -1,6 +1,6 @@
 import React from 'react'
 import { createContext } from 'react'
-import api from '../pages/api/api';
+import api from '../pages/api/Api';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';

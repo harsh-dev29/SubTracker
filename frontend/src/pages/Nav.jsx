@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { RiBarChartFill, RiHome4Line, RiMenuFoldLine, RiMenuLine, RiSettings3Line } from '@remixicon/react';
 import { useNavigate } from 'react-router-dom';
-import api from './api/api';
+import api from './api/Api';
 import { AuthContext } from '../context/Wrapper';
 import { toast } from 'react-toastify';
 import gsap from 'gsap'

@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import api from '../pages/api/api'
 import { useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 import { easeInOut, motion } from 'motion/react'
@@ -12,6 +11,7 @@ import chatgptimg from '../assets/png/chatgpt.png'
 import youtubeimg from '../assets/png/youtube.png'
 import applemusicpng from '../assets/png/applemusic.png'
 import { AuthContext } from '../context/Wrapper'
+import Api from './api/Api'
 
 const Login = () => {
 
@@ -25,7 +25,7 @@ const Login = () => {
     const submitHanddler = async (data) => {
 
         try {
-            const response = await api.post('/auth/login', {
+            const response = await Api.post('/auth/login', {
                 email: data.email,
                 password: data.password
             }).then((res) => {

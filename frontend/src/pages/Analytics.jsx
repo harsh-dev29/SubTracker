@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import api from './api/api';
 import Chart from './Chart';
 import ChartBar from './ChartBar';
 import SubCard from './SubCard';
 import SubComponent from './SubComponent';
 import { RiMenuUnfoldLine } from '@remixicon/react';
+import Api from './api/Api';
 
 const Analytics = ({ isActive, setisActive }) => {
     const [subs, setSubs] = useState([])
 
     const fetch = async () => {
         try {
-            const res = await api.get('/sub/getsub')
+            const res = await Api.get('/sub/getsub')
             if (res.status === 200) {
                 setSubs(res.data.allSubscriptions)
             } else {

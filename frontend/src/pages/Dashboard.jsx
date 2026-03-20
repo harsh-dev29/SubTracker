@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from './../context/Wrapper';
-import api from './api/api';
-import Register from './Register';
 import SubCard from './SubCard';
 import { RiMenuLine, RiMenuUnfoldLine } from '@remixicon/react';
 import SubComponent from './SubComponent';
+import Api from './api/Api';
 
 const Dashboard = ({ isActive, setisActive }) => {
     const { user, verifyUser } = useContext(AuthContext)
@@ -16,9 +15,9 @@ const Dashboard = ({ isActive, setisActive }) => {
     async function fetchData() {
         try {
             const [subRes, totalRes, filterRes] = await Promise.all([
-                api.get('/sub/getsub'),
-                api.get('/sub/totalspend'),
-                api.get("/sub/filteredsubs")
+                Api.get('/sub/getsub'),
+                Api.get('/sub/totalspend'),
+                Api.get("/sub/filteredsubs")
             ])
             setTotalSubs(subRes.data.allSubscriptions)
             setmonthlySpend(totalRes.data.monthlyPrice)
@@ -35,6 +34,7 @@ const Dashboard = ({ isActive, setisActive }) => {
         fetchData()
     }, [])
 
+    console.log(document.cookie);
 
 
     return (
