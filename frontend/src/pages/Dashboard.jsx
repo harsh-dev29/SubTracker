@@ -3,7 +3,7 @@ import { AuthContext } from './../context/Wrapper';
 import SubCard from './SubCard';
 import { RiMenuLine, RiMenuUnfoldLine } from '@remixicon/react';
 import SubComponent from './SubComponent';
-import Api from '../api/api';
+import api from '../api/api';
 
 const Dashboard = ({ isActive, setisActive }) => {
     const { user, verifyUser } = useContext(AuthContext)
@@ -15,9 +15,9 @@ const Dashboard = ({ isActive, setisActive }) => {
     async function fetchData() {
         try {
             const [subRes, totalRes, filterRes] = await Promise.all([
-                Api.get('/sub/getsub'),
-                Api.get('/sub/totalspend'),
-                Api.get("/sub/filteredsubs")
+                api.get('/sub/getsub'),
+                api.get('/sub/totalspend'),
+                api.get("/sub/filteredsubs")
             ])
             setTotalSubs(subRes.data.allSubscriptions)
             setmonthlySpend(totalRes.data.monthlyPrice)

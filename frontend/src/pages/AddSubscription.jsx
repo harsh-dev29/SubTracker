@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { RiMenuUnfoldLine } from "@remixicon/react";
-import Api from "../api/api";
+import api from "../api/api";
 
 const AddSubscription = ({ isActive, setisActive }) => {
     const navigate = useNavigate()
@@ -23,7 +23,7 @@ const AddSubscription = ({ isActive, setisActive }) => {
     const submitHanddler = async (e) => {
         try {
             // Send data to your backend
-            const res = await Api.post("https://subtracker-eiut.onrender.com/api/sub/addsub", e, {
+            const res = await api.post("https://subtracker-eiut.onrender.com/api/sub/addsub", e, {
                 withCredentials: true,
             }).then((res) => {
                 toast.success("Subscription Added!");

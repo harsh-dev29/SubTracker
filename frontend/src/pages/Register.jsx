@@ -9,7 +9,7 @@ import chatgptimg from '../assets/png/chatgpt.png'
 import youtubeimg from '../assets/png/youtube.png'
 import applemusicpng from '../assets/png/applemusic.png'
 import { toast } from 'react-toastify'
-import Api from '../api/api'
+import api from '../api/api'
 
 
 const Register = () => {
@@ -27,7 +27,7 @@ const Register = () => {
 
 
         try {
-            const response = await Api.post('/auth/register', {
+            const response = await api.post('/auth/register', {
                 fullName: {
                     firstName: data.firstName,
                     lastName: data.lastName

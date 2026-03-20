@@ -3,21 +3,21 @@ import { AuthContext } from '../context/Wrapper'
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import { RiMenuUnfoldLine } from '@remixicon/react';
-import Api from '../api/api';
+import api from '../api/api';
 
 const Setting = ({ isActive, setisActive }) => {
     const { user } = useContext(AuthContext)
     const [TotalSubs, setTotalSubs] = useState([])
     const navigate = useNavigate()
     const logout = () => {
-        Api.get('/auth/logout').then((res) => {
+        api.get('/auth/logout').then((res) => {
             toast.success("user Logged Out Successfylly")
             navigate('/login')
         })
     }
 
     const allSubs = () => {
-        Api.get('/sub/getsub').then((res) => {
+        api.get('/sub/getsub').then((res) => {
             setTotalSubs(res.data?.allSubscriptions.length)
         })
     }

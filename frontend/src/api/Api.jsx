@@ -1,9 +1,8 @@
-// src/api/axios.js
 import axios from "axios";
 
-const Api = axios.create({
+const api = axios.create({
     baseURL: "https://subtracker-eiut.onrender.com/api",
     withCredentials: true
 });
 
-export default Api;
+export default api;

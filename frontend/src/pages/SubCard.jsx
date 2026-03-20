@@ -1,7 +1,7 @@
 import { RiDeleteBin2Line } from '@remixicon/react';
 import React, { useEffect } from 'react'
 import { toast } from 'react-toastify';
-import Api from '../api/api';
+import api from '../api/api';
 const formatDate = (dateString) => {
     const date = new Date(dateString);
 
@@ -15,7 +15,7 @@ const formatDate = (dateString) => {
 const SubCard = ({ index, sub }) => {
     const deleteSub = async (id) => {
         try {
-            await Api.delete(`/sub/deletesub/${id}`).then((res) => {
+            await api.delete(`/sub/deletesub/${id}`).then((res) => {
                 console.log(res);
                 toast.success("sub Deleted successfully")
             })

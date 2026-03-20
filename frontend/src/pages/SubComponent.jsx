@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import SubCard from './SubCard'
-import Api from '../api/api'
+import api from '../api/api'
 
 const SubComponent = () => {
     const [subs, setsubs] = useState([])
 
     const fetchingSubs = async () => {
         try {
-            const res = await Api.get('/sub/getsub')
+            const res = await api.get('/sub/getsub')
             if (res.status === 200) {
                 setsubs(res.data.allSubscriptions)
             }
