@@ -11,7 +11,7 @@ const Wrapper = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     const verifyUser = async () => {
-        await axios.get("https://subtracker-eiut.onrender.com/auth/user",)
+        await axios.get("https://subtracker-eiut.onrender.com/api/auth/user", { withCredentials: true })
             .then(res => setUser(res.data.user))
             .catch(() => setUser(null))
             .finally(() => setLoading(false));

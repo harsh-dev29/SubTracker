@@ -1,7 +1,7 @@
 import { RiDeleteBin2Line } from '@remixicon/react';
 import React, { useEffect } from 'react'
 import { toast } from 'react-toastify';
-import Api from '../api/Api';
+import Api from '../api/api';
 const formatDate = (dateString) => {
     const date = new Date(dateString);
 

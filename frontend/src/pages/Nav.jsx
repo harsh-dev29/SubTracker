@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react';
 import { easeInOut, easeOut } from 'motion/react';
-import Api from '../api/Api';
+import Api from '../api/api';
 
 
 const Nav = ({ user, isActive, setisActive }) => {

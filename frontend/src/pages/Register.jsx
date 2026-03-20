@@ -9,7 +9,7 @@ import chatgptimg from '../assets/png/chatgpt.png'
 import youtubeimg from '../assets/png/youtube.png'
 import applemusicpng from '../assets/png/applemusic.png'
 import { toast } from 'react-toastify'
-import Api from '../api/Api'
+import Api from '../api/api'
 
 
 const Register = () => {

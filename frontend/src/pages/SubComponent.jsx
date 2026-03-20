@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SubCard from './SubCard'
-import Api from '../api/Api'
+import Api from '../api/api'
 
 const SubComponent = () => {
     const [subs, setsubs] = useState([])
