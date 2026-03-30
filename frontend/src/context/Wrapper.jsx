@@ -3,6 +3,7 @@ import { createContext } from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
+import api from '../api/AxiosApi';
 
 export const AuthContext = createContext()
 
@@ -11,7 +12,7 @@ const Wrapper = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     const verifyUser = async () => {
-        await axios.get("https://subtracker-eiut.onrender.com/api/auth/user", { withCredentials: true })
+        await api.get("/auth/user", { withCredentials: true })
             .then(res => setUser(res.data.user))
             .catch(() => setUser(null))
             .finally(() => setLoading(false));

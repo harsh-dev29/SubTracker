@@ -19,6 +19,8 @@ const AllRoutes = ({ isActive, setisActive }) => {
     return (
         <div>
             <Routes>
+
+                <Route path='/' element={<Home />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/addSubscription' element={<AddSubscription isActive={isActive} setisActive={setisActive} />} />

@@ -98,7 +98,7 @@ const Nav = ({ user, isActive, setisActive }) => {
         }
     }, [isActive])
 
-    const showNavRoutes = ['/', '/dashboard', '/addsubscription', '/analytics', '/setting'];
+    const showNavRoutes = ['/dashboard', '/addsubscription', '/analytics', '/setting'];
 
     // If the current path isn't in our list, it's likely a 404 or a hidden page
     if (!showNavRoutes.includes(location.pathname)) {

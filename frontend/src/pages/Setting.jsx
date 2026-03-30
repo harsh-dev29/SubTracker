@@ -10,7 +10,7 @@ const Setting = ({ isActive, setisActive }) => {
     const [TotalSubs, setTotalSubs] = useState([])
     const navigate = useNavigate()
     const logout = () => {
-        api.get('/auth/logout').then((res) => {
+        api.post('/auth/logout').then((res) => {
             toast.success("user Logged Out Successfylly")
             navigate('/login')
         })

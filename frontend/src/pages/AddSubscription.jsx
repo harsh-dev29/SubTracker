@@ -23,7 +23,7 @@ const AddSubscription = ({ isActive, setisActive }) => {
     const submitHanddler = async (e) => {
         try {
             // Send data to your backend
-            const res = await api.post("https://subtracker-eiut.onrender.com/api/sub/addsub", e, {
+            const res = await api.post("/sub/addsub", e, {
                 withCredentials: true,
             }).then((res) => {
                 toast.success("Subscription Added!");
