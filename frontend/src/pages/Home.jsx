@@ -67,8 +67,23 @@ const Home = () => {
     return (
         <div className="bg-slate-950 text-slate-100 w-screen font-sans selection:bg-slate-800 selection:text-slate-200">
             {/* --- HERO SECTION --- */}
+            <div className='h-22 justify-between flex items-center px-4 lg:px-8 py-12'>
+                <div className='flex gap-2 items-center justify-center'>
 
-            <section className="relative overflow-hidden border-b  border-slate-900 bg-slate-950 px-6 py">
+                    <h1 className='bg-white text-2xl font-bold items-center justify-center h-14 w-14 rounded-xl flex text-black'>S</h1>
+                    <h1 className='lg:text-5xl text-4xl font-extrabold '>SubTracker</h1>
+                </div>
+                <div className='p-3 lg:flex hidden  gap-3 font-bold text-lg'>
+                    <button onClick={() => {
+                        navigate('/login')
+                    }} className='border hover:bg-slate-800 px-3 py-1 roMNnded'>Login</button>
+                    <button onClick={() => {
+                        navigate('/register')
+                    }} className='border px-3 py-1 hover:bg-slate-800 rounded'>Sign-up</button>
+                </div>
+
+            </div>
+            <section className="relative overflow-hidden border-b  border-slate-900 bg-slate-950 px-6 ">
 
 
                 <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
