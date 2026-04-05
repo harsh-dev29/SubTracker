@@ -5,54 +5,63 @@ import { sendWelcomeEmail } from './../utils/email.js';
 
 
 export async function registerUser(req, res) {
-    const { email, password, fullName = {
-        firstName: req.body["fullName.firstName"],
-        lastName: req.body["fullName.lastName"],
-    } } = req.body
-    const profile = req.file
+    try {
+        const { email, password, fullName = {
+            firstName: req.body["fullName.firstName"],
+            lastName: req.body["fullName.lastName"],
+        } } = req.body
+        const profile = req.file
 
-    const isUserAlreadyExists = await userModel.findOne({ email })
+        const isUserAlreadyExists = await userModel.findOne({ email })
 
-    if (isUserAlreadyExists) {
-        return res.status(400).json({ messag: 'User alreaady exists' })
-    }
-
-
-    const hash = await bcrypt.hash(password, 10)
-
-    const user = await userModel.create({
-        email,
-        password: hash,
-        fullName,
-        profile
-    })
-
-
-    const token = jwt.sign({
-        id: user._id,
-        fullname: user.fullName
-    }, process.env.JWT_SECRET,)
-
-    res.cookie("token", token, {
-        httpOnly: true,
-        secure: true, // Always true for Render/Production
-        sameSite: 'none', // Required for cross-site cookies
-        maxAge: 24 * 60 * 60 * 1000
-    })
-    // const newUser = user;
-    // const savedUser = await newUser.save();
-    await sendWelcomeEmail(user)
-        .then(() => console.log("Email sent successfully"))
-        .catch((err) => console.log("Email failed:", err));
-
-    res.status(201).json({
-        message: 'User registered successfully',
-        user: {
-            id: user._id,
-            email: user.email,
-            fullname: user.fullName
+        if (isUserAlreadyExists) {
+            return res.status(400).json({ messag: 'User alreaady exists' })
         }
-    })
+
+
+        const hash = await bcrypt.hash(password, 10)
+
+        const user = await userModel.create({
+            email,
+            password: hash,
+            fullName,
+            profile
+        })
+
+
+        const token = jwt.sign({
+            id: user._id,
+            fullname: user.fullName
+        }, process.env.JWT_SECRET,)
+
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: true, // Always true for Render/Production
+            sameSite: 'none', // Required for cross-site cookies
+            maxAge: 24 * 60 * 60 * 1000
+        })
+        // const newUser = user;
+        // const savedUser = await newUser.save();
+        try {
+            sendWelcomeEmail(user)
+                .then(() => console.log("Email sent successfully"))
+                .catch((err) => console.log("Email failed:", err));
+
+        } catch (emailError) {
+            console.error('error in sending email to user ', emailError)
+        }
+
+        res.status(201).json({
+            message: 'User registered successfully',
+            user: {
+                id: user._id,
+                email: user.email,
+                fullname: user.fullName
+            }
+        })
+    } catch (error) {
+
+    }
 }
 
 export async function loginUser(req, res) {
