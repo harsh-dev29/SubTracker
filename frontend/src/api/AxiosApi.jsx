@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "https://subtracker-1-suwy.onrender.com/api",
+    baseURL: "https://subtracker-eiut.onrender.com",
     withCredentials: true
 });
 

@@ -64,7 +64,7 @@ const Home = () => {
     ];
 
     return (
-        <div className="bg-slate-950 text-slate-100 w-screen font-sans selection:bg-slate-800 selection:text-slate-200">
+        <div className="bg-slate-950 text-slate-100 w-screen  selection:bg-slate-800 selection:text-slate-200">
             {/* --- HERO SECTION --- */}
             <div className='h-22 justify-between flex items-center px-4 lg:px-8 py-12'>
                 <div className='flex gap-2 items-center justify-center'>
@@ -75,10 +75,10 @@ const Home = () => {
                 <div className='p-3 lg:flex hidden  gap-3 font-bold text-lg'>
                     <button onClick={() => {
                         navigate('/login')
-                    }} className='border hover:bg-slate-800 px-3 py-1 rounded'>Login</button>
+                    }} className='border cursor-pointer hover:bg-slate-800 px-3 py-1 rounded'>Login</button>
                     <button onClick={() => {
                         navigate('/register')
-                    }} className='border px-3 py-1 hover:bg-slate-800 rounded'>Sign-up</button>
+                    }} className='border px-3 py-1 cursor-pointer hover:bg-slate-800 rounded'>Sign-up</button>
                 </div>
 
             </div>

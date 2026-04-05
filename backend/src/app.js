@@ -9,7 +9,6 @@ const app = express()
 
 const allowedOrigins = [
     'https://sub-tracker-one.vercel.app', // Your Live Production URL
-    'http://localhost:5173',
 ]
 
 app.use(express.json())
