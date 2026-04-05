@@ -29,7 +29,7 @@ const Login = () => {
                 email: data.email,
                 password: data.password
             }).then((res) => {
-                navigate('/')
+                navigate('/dashboard')
                 verifyUser()
                 toast.success("user login sucessfully")
 

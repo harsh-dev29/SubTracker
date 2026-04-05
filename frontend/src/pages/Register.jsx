@@ -35,7 +35,7 @@ const Register = () => {
                 email: data.email,
                 password: data.password
             }).then(() => {
-                navigate('/')
+                navigate('/dashboard')
                 toast.success("user registered successfully")
             })
         } catch (error) {

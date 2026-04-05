@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import dashboardImg from '.././assets/png/dashboard.png'
 import { useNavigate } from 'react-router';
+import { AuthContext } from '../context/Wrapper';
 const Home = () => {
+    const { user } = useContext(AuthContext)
     const currentYear = new Date().getFullYear();
     const navigate = useNavigate()
 
@@ -68,18 +70,23 @@ const Home = () => {
             {/* --- HERO SECTION --- */}
             <div className='h-22 justify-between flex items-center px-4 lg:px-8 py-12'>
                 <div className='flex gap-2 items-center justify-center'>
-
                     <h1 className='bg-white text-2xl font-bold items-center justify-center h-14 w-14 rounded-xl flex text-black'>S</h1>
                     <h1 className='lg:text-5xl text-4xl font-extrabold '>SubTracker</h1>
                 </div>
-                <div className='p-3 lg:flex hidden  gap-3 font-bold text-lg'>
+                {!user ? <div className='p-3 lg:flex hidden  gap-3 font-bold text-lg'>
                     <button onClick={() => {
                         navigate('/login')
                     }} className='border cursor-pointer hover:bg-slate-800 px-3 py-1 rounded'>Login</button>
                     <button onClick={() => {
                         navigate('/register')
                     }} className='border px-3 py-1 cursor-pointer hover:bg-slate-800 rounded'>Sign-up</button>
-                </div>
+                </div> : <div>
+                    <button onClick={() => {
+                        navigate('/dashbaord')
+                    }} className='border px-3 py-1 cursor-pointer hover:bg-slate-800 rounded'>Dashboard</button>
+                </div>}
+
+
 
             </div>
             <section className="relative overflow-hidden border-b  border-slate-900 bg-slate-950 px-6 ">
