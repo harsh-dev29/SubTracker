@@ -82,7 +82,7 @@ const Home = () => {
                     }} className='border px-3 py-1 cursor-pointer hover:bg-slate-800 rounded'>Sign-up</button>
                 </div> : <div>
                     <button onClick={() => {
-                        navigate('/dashbaord')
+                        navigate('/dashboard')
                     }} className='border px-3 py-1 cursor-pointer hover:bg-slate-800 rounded'>Dashboard</button>
                 </div>}
 
