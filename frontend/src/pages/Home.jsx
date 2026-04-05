@@ -1,7 +1,6 @@
 import React from 'react';
 import dashboardImg from '.././assets/png/dashboard.png'
 import { useNavigate } from 'react-router';
-
 const Home = () => {
     const currentYear = new Date().getFullYear();
     const navigate = useNavigate()
@@ -76,7 +75,7 @@ const Home = () => {
                 <div className='p-3 lg:flex hidden  gap-3 font-bold text-lg'>
                     <button onClick={() => {
                         navigate('/login')
-                    }} className='border hover:bg-slate-800 px-3 py-1 roMNnded'>Login</button>
+                    }} className='border hover:bg-slate-800 px-3 py-1 rounded'>Login</button>
                     <button onClick={() => {
                         navigate('/register')
                     }} className='border px-3 py-1 hover:bg-slate-800 rounded'>Sign-up</button>
