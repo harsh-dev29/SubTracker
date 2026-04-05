@@ -27,7 +27,7 @@ const AllRoutes = ({ isActive, setisActive }) => {
                 <Route path='/analytics' element={<Analytics isActive={isActive} setisActive={setisActive} />} />
                 <Route path='/setting' element={<Setting user={user} isActive={isActive} setisActive={setisActive} />} />
                 <Route path="*" element={<NotFound />} />
-                {user ? <><Route path='/' element={<Dashboard isActive={isActive} setisActive={setisActive} />} /></> : ""}
+                {user ? <><Route path='/dashboard' element={<Dashboard isActive={isActive} setisActive={setisActive} />} /></> : ""}
             </Routes>
         </div>
     )
