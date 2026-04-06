@@ -8,7 +8,8 @@ import cors from 'cors'
 const app = express()
 
 const allowedOrigins = [
-    'https://sub-tracker-one.vercel.app', // Your Live Production URL
+    'https://sub-tracker-one.vercel.app',
+    'http://localhost:5173' // Your Live Production URL
 ]
 
 app.use(express.json())
